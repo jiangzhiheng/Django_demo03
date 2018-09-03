@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>
+            <input type="text" name="user"/>
+        </div>
+        <div>
+            <input type="password" name="pwd"/>
+        </div>
+        <input type="button" value="提交" name="提交"  onclick="DoSubmint();"/>
+    </div>
+
+    <script src="/static/jquery-2.0.3.js"></script>
+    <script>
+        function DoSubmint() {
+            var input_dict = {};
+            $('input').each(function () {
+                var v = $(this).val();
+                var n = $(this).attr('name');
+                input_dict[n] = v;
+            })
+            console.log(input_dict);
+            $.ajax({
+                url:'/login/',
+                type: 'POST',
+                data: input_dict,
+                success: function () {
+                    console.log(data);
+                },
+                error: function () {
+
+                },
+            })
+        }
+    </script>
+</body>
+</html>
